@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Utilities to make it easier to use duckdb-wasm in React apps.",
   "author": "Matt Holden",
-  "private": true,
   "license": "MIT",
   "homepage": "https://github.com/holdenmatt/duckdb-wasm-kit",
   "repository": {
