@@ -16,9 +16,6 @@
     "webassembly",
     "react"
   ],
-  "scripts": {
-    "build": "tsc --declaration"
-  },
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.27.0",
     "apache-arrow": "^11.0.0",
