@@ -43,8 +43,11 @@ export const arrowToArrayBuffer = (arrow: Arrow): ArrayBuffer => {
  */
 export function arrowToJSON(arrow: Arrow): Record<string, any>[] {
   const rows: Record<string, any>[] = [];
-  for (const row of arrow) {
-    rows.push(row.toJSON());
+  for (let i = 0; i < arrow.numRows; i++) {
+    const row = arrow.get(i);
+    if (row) {
+      rows.push(row.toJSON());
+    }
   }
   return rows;
 }
