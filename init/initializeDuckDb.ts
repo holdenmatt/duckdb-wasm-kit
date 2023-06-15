@@ -31,7 +31,16 @@ export default async function initializeDuckDb({
   return DB;
 }
 
-const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
+const MANUAL_BUNDLES: duckdb.DuckDBBundles = {
+  mvp: {
+    mainModule: "/wasm/duckdb-mvp.wasm",
+    mainWorker: "/wasm/duckdb-browser-mvp.worker.js",
+  },
+  eh: {
+    mainModule: "/wasm/duckdb-eh.wasm",
+    mainWorker: "/wasm/duckdb-browser-eh.worker.js",
+  },
+};
 
 /**
  * Initialize DuckDB with a browser-specific Wasm bundle.
@@ -43,7 +52,7 @@ const _initializeDuckDb = async (
   const start = performance.now();
 
   // Select a bundle based on browser checks
-  const bundle = await duckdb.selectBundle(JSDELIVR_BUNDLES);
+  const bundle = await duckdb.selectBundle(MANUAL_BUNDLES);
 
   // Instantiate the async version of DuckDB-wasm
   const worker = new Worker(bundle.mainWorker!);
