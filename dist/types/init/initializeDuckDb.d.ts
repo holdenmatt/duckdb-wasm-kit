@@ -3,13 +3,12 @@ export declare let DEBUG: boolean | undefined;
 /**
  * Initialize DuckDB, while ensuring we only initialize once.
  *
- * @param debug If true, log elapsed times to the console.
+ * @param debug If true, log DuckDB logs and elapsed times to the console.
  * @param config An optional DuckDBConfig object.
  */
-export default function initializeDuckDb({ debug, config, includeJson, }: {
+export default function initializeDuckDb({ debug, config, }: {
     debug: boolean;
     config?: DuckDBConfig;
-    includeJson?: boolean;
 }): Promise<AsyncDuckDB>;
 /**
  * Get the instance of DuckDB that has been previously initialized.
