@@ -2,13 +2,6 @@
 
 Utilities to make it easier to use duckdb-wasm in React apps.
 
-Assumes the duckdb wasm bundles are served statically:
+This is primarily a library for my own use, but it may be useful to others.
 
-- /wasm/duckdb-mvp.wasm
-- /wasm/duckdb-browser-mvp.worker.js
-- /wasm/duckdb-eh.wasm
-- /wasm/duckdb-browser-eh.worker.js
-
-See: https://www.npmjs.com/package/@duckdb/duckdb-wasm
-
-TODO: Load from JsDelivr instead.
+TODO: Add documentation
