@@ -1,7 +1,6 @@
 import * as duckdb from "@duckdb/duckdb-wasm";
 import { AsyncDuckDB, DuckDBConfig } from "@duckdb/duckdb-wasm";
-
-import { logElapsedTime } from "../util/perf";
+import { logElapsedTime } from "@holdenmatt/ts-utils";
 
 export let DEBUG: boolean | undefined;
 

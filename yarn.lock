@@ -9,6 +9,11 @@
   dependencies:
     apache-arrow "^11.0.0"
 
+"@holdenmatt/ts-utils@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@holdenmatt/ts-utils/-/ts-utils-0.1.4.tgz#f77490278301f0b431aac70e0379e1d4f885b9a6"
+  integrity sha512-a69N3nFHmhSULJxptS514aBPJEu8KbpligNhH3Tgq2bz0fVvCNb62FedQAY5Wn3JVdkdp05/Y96GKspSNi7vbg==
+
 "@types/command-line-args@5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@types/command-line-args/-/command-line-args-5.2.0.tgz#adbb77980a1cc376bb208e3f4142e907410430f6"

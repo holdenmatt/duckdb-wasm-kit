@@ -4,10 +4,10 @@
 import * as duckdb from "@duckdb/duckdb-wasm";
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
 import { Table as Arrow } from "apache-arrow";
+import { logElapsedTime } from "@holdenmatt/ts-utils";
 
 import { arrayBufferToArrow, isArrowFile } from "../files/arrow";
 import { isParquetFile } from "../files/parquet";
-import { logElapsedTime } from "../util/perf";
 import { runQuery } from "../util/runQuery";
 import { getTempFilename } from "../util/tempfile";
 import { inferTypes } from "./inferTypes";
@@ -182,7 +182,10 @@ export const insertParquet = async (
       duckdb.DuckDBDataProtocol.BROWSER_FILEREADER,
       true
     );
-    await runQuery(db, `CREATE TABLE '${tableName}' AS SELECT * FROM '${tempFile}'`);
+    await runQuery(
+      db,
+      `CREATE TABLE '${tableName}' AS SELECT * FROM '${tempFile}'`
+    );
     await db.dropFile(tempFile);
   } catch (e) {
     console.error(e);

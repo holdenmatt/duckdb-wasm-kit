@@ -9,17 +9,13 @@
     "type": "git",
     "url": "https://github.com/holdenmatt/duckdb-wasm-kit"
   },
-  "keywords": [
-    "duckdb",
-    "wasm",
-    "webassembly",
-    "react"
-  ],
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "build": "tsc --declaration"
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.27.0",
+    "@holdenmatt/ts-utils": "^0.1.4",
     "apache-arrow": "^11.0.0",
     "react-async-hook": "^4.0.0"
   },
@@ -30,5 +26,10 @@
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
-  "types": "./dist/types/index.d.ts"
+  "keywords": [
+    "duckdb",
+    "wasm",
+    "webassembly",
+    "react"
+  ]
 }
