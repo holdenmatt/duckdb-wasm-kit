@@ -4,6 +4,7 @@
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
 
 import { runQuery } from "./runQuery";
+import { AssertionError } from "@holdenmatt/ts-utils";
 
 export enum TableType {
   Table = "Table",
@@ -32,7 +33,7 @@ export const tableType = async (
       case "VIEW":
         return TableType.View;
       default:
-        throw new Error(`Unexpected table type: ${type}`);
+        throw new AssertionError(`Unexpected table type: ${type}`);
     }
   } else {
     return undefined;
@@ -54,7 +55,11 @@ export const drop = async (db: AsyncDuckDB, name: string) => {
 /**
  * Rename the table or view with a given name.
  */
-export const rename = async (db: AsyncDuckDB, name: string, newName: string) => {
+export const rename = async (
+  db: AsyncDuckDB,
+  name: string,
+  newName: string
+) => {
   const type = await tableType(db, name);
   if (type === TableType.Table) {
     await runQuery(db, `alter table "${name}" rename to "${newName}"`);
@@ -106,4 +111,37 @@ export const columnTypes = async (
   }
 
   return columns;
+};
+
+/**
+ * Compute the cardinalities of all columns in the table with a given name.
+ */
+export const cardinalities = async (
+  db: AsyncDuckDB,
+  name: string
+): Promise<Record<string, number>> => {
+  const types = await columnTypes(db, name);
+  const columns = Array.from(types.keys());
+
+  const counts = await runQuery(
+    db,
+    `select count(distinct columns(*)) from "${name}"`
+  );
+
+  const row = counts.get(0);
+  if (!row) {
+    throw new AssertionError(`Expected a single row of cardinalities: ${name}`);
+  }
+
+  const rowValues: number[] = row.toArray();
+  if (rowValues.length !== columns.length) {
+    throw new AssertionError(`Unexpected length mismatch: ${name}`);
+  }
+
+  const cardinalities: Record<string, number> = {};
+  for (let i = 0; i < columns.length; i++) {
+    cardinalities[columns[i]] = rowValues[i];
+  }
+
+  return cardinalities;
 };

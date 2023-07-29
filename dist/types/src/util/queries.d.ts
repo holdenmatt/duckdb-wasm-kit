@@ -29,3 +29,7 @@ export declare const tableNames: (db: AsyncDuckDB, includeViews?: boolean) => Pr
  * Return a mapping from column names to data types, or the empty Map if no such table columns exist.
  */
 export declare const columnTypes: (db: AsyncDuckDB, name: string) => Promise<Map<string, string>>;
+/**
+ * Compute the cardinalities of all columns in the table with a given name.
+ */
+export declare const cardinalities: (db: AsyncDuckDB, name: string) => Promise<Record<string, number>>;
