@@ -7,7 +7,7 @@ import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
  */
 export declare const exportArrow: (db: AsyncDuckDB, tableName: string, filename?: string) => Promise<File>;
 /**
- * Export a given table (or view) to a CSV file with a given filename.
+ * Export a table (or view) to a CSV file with a given filename.
  */
 export declare const exportCsv: (db: AsyncDuckDB, tableName: string, filename?: string, delimiter?: string) => Promise<File>;
 /**
