@@ -79,7 +79,10 @@ to react to the typical query lifecycle.
 import { useDuckDbQuery } from "duckdb-wasm-kit";
 
 const MyComponent = () => {
-    const { arrow, loading, error } = useDuckDbQuery(`select movies where actor = 'John Cleese';`);
+    const { arrow, loading, error } = useDuckDbQuery(`
+        select * from movies
+        where actor = 'John Cleese';
+    `);
 
     if (loading) {
         return ...;
@@ -116,30 +119,30 @@ If a tableName isn't provided, `file.name` will be used.
 
 ## Exporting files
 
-We similarly provide functions for exporting to a file:
+We similarly provide functions for exporting files:
 
 ```
 /**
  * Export a table (or view) to an Arrow file with a given filename.
  */
-export declare const exportArrow: (db: AsyncDuckDB, tableName: string, filename?: string) => Promise<File>;
+const exportArrow: (db: AsyncDuckDB, tableName: string, filename?: string) => Promise<File>;
 
 /**
- * Export a given table (or view) to a CSV file with a given filename.
+ * Export a table (or view) to a CSV file with a given filename.
  */
-export declare const exportCsv: (db: AsyncDuckDB, tableName: string, filename?: string, delimiter?: string) => Promise<File>;
+const exportCsv: (db: AsyncDuckDB, tableName: string, filename?: string, delimiter?: string) => Promise<File>;
 
 /**
  * Export a table to Parquet.
  *
  * Uses zstd compression by default, which seems to be both smaller & faster for many files.
  */
-export declare const exportParquet: (db: AsyncDuckDB, tableName: string, filename?: string, compression?: "uncompressed" | "snappy" | "gzip" | "zstd") => Promise<File>;
+const exportParquet: (db: AsyncDuckDB, tableName: string, filename?: string, compression?: "uncompressed" | "snappy" | "gzip" | "zstd") => Promise<File>;
 ```
 
 ## Parquet in the browser!
 
-Parquet is an amazing format for compressing data files (often up to 90% smaller than CSV).
+Parquet is an amazing format for compressing data files (often 90-95% smaller than CSV).
 
 Unfortunately, Javascript has lacked an official Parquet library for years. It's not an
 easy format to implement, and it involves multiple compression codecs.
@@ -149,7 +152,7 @@ with zero dependencies! 🎉
 
 ## Try it out!
 
-As a demo of what this library enables, check out [https://duckbook.ai](duckbook.ai).
+As a demo of what this library enables, check out [duckbook.ai](https://duckbook.ai).
 
 It's a free SQL notebook I built as a solo project, combining DuckDB with GPT-4 in a
 modern Notion-like interface.
@@ -165,4 +168,4 @@ or removed in the future, so don't depend on them :)
 ## License
 
 MIT license. Feel free to copy/fork code as you like. No need for attribution, but if you
-find this helpful or build something cool with it, [let me know!](https://twitter.com/holdenmatt/).
+find this library helpful or build something cool with it, [let me know!](https://twitter.com/holdenmatt/)
