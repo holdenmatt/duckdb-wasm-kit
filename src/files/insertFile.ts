@@ -6,8 +6,8 @@ import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
 import { Table as Arrow } from "apache-arrow";
 import { logElapsedTime } from "@holdenmatt/ts-utils";
 
-import { arrayBufferToArrow, isArrowFile } from "../files/arrow";
-import { isParquetFile } from "../files/parquet";
+import { arrayBufferToArrow, isArrowFile } from "./arrow";
+import { isParquetFile } from "./parquet";
 import { runQuery } from "../util/runQuery";
 import { getTempFilename } from "../util/tempfile";
 import { inferTypes } from "../util/inferTypes";

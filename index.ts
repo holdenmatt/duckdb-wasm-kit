@@ -6,7 +6,6 @@ import initializeDuckDb, { getDuckDB } from "./src/init/initializeDuckDb";
 import { runQuery } from "./src/util/runQuery";
 
 export * from "./src/files";
-export * from "./src/io";
 
 export {
   AsyncDuckDB,
