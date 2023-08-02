@@ -1,7 +1,7 @@
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
 
-import { columnTypes } from "../util/queries";
-import { runQuery } from "../util/runQuery";
+import { columnTypes } from "./queries";
+import { runQuery } from "./runQuery";
 
 /**
  * Infer certain column types that DuckDB tends to get wrong when importing (untyped) CSVs.

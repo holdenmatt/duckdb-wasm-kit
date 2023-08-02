@@ -10,7 +10,7 @@ import { arrayBufferToArrow, isArrowFile } from "../files/arrow";
 import { isParquetFile } from "../files/parquet";
 import { runQuery } from "../util/runQuery";
 import { getTempFilename } from "../util/tempfile";
-import { inferTypes } from "./inferTypes";
+import { inferTypes } from "../util/inferTypes";
 
 export class InsertFileError extends Error {
   title: string;
