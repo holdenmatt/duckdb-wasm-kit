@@ -7,18 +7,16 @@ export let DEBUG: boolean | undefined;
 let DB: Promise<AsyncDuckDB> | undefined;
 
 /**
- * Initialize DuckDB, while ensuring we only initialize once.
+ * Initialize DuckDB, ensuring we only initialize it once.
  *
  * @param debug If true, log DuckDB logs and elapsed times to the console.
  * @param config An optional DuckDBConfig object.
  */
-export default async function initializeDuckDb({
-  debug = false,
-  config,
-}: {
+export default async function initializeDuckDb(options?: {
   debug: boolean;
   config?: DuckDBConfig;
 }): Promise<AsyncDuckDB> {
+  const { debug = false, config } = options || {};
   DEBUG = debug;
 
   if (DB === undefined) {
@@ -61,15 +59,15 @@ const _initializeDuckDb = async (
 };
 
 /**
- * Get the instance of DuckDB that has been previously initialized.
+ * Get the instance of DuckDB, initializing it if needed.
  *
  * Typically `useDuckDB` is used in React components instead, but this
  * method provides access outside of React contexts.
  */
-export const getDuckDB = (): Promise<AsyncDuckDB> => {
+export const getDuckDB = async (): Promise<AsyncDuckDB> => {
   if (DB) {
     return DB;
   } else {
-    throw new Error("DuckDB must be initialized before calling `getDuckDB`");
+    return await initializeDuckDb();
   }
 };

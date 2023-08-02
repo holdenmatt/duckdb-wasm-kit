@@ -26,7 +26,7 @@ export const exportArrow = async (
 };
 
 /**
- * Export a given table (or view) to a CSV file with a given filename.
+ * Export a table (or view) to a CSV file with a given filename.
  */
 export const exportCsv = async (
   db: AsyncDuckDB,

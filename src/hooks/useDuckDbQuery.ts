@@ -18,7 +18,7 @@ export const useDuckDbQuery = (
   loading: boolean;
   error: Error | undefined;
 } => {
-  const db = useDuckDb();
+  const { db } = useDuckDb();
 
   const {
     result: arrow,

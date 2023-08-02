@@ -1,12 +1,23 @@
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
-import { useContext } from "react";
-
-import { DuckDbContext } from "../provider/DuckDbProvider";
+import { useAsync } from "react-async-hook";
+import { getDuckDB } from "../init/initializeDuckDb";
 
 /**
- * React hook to access the DuckDb instance from an enclosing DuckDbProvider.
+ * React hook to access a singleton DuckDb instance within components or other hooks.
  */
-export const useDuckDb = (): AsyncDuckDB | undefined => {
-  const db = useContext(DuckDbContext);
-  return db;
+export const useDuckDb = (): {
+  db: AsyncDuckDB | undefined;
+  loading: boolean;
+  error: Error | undefined;
+} => {
+  const {
+    result: db,
+    loading,
+    error,
+  } = useAsync(async () => {
+    const db = await getDuckDB();
+    return db;
+  }, []);
+
+  return { db, loading, error };
 };

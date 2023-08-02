@@ -5,6 +5,8 @@ import { runQuery } from "../util/runQuery";
 
 /**
  * Infer certain column types that DuckDB tends to get wrong when importing (untyped) CSVs.
+ *
+ * TODO: This probably doesn't belong here. Either expand it or remove it.
  */
 export const inferTypes = async (db: AsyncDuckDB, tableName: string) => {
   const types = await columnTypes(db, tableName);

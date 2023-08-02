@@ -31,10 +31,11 @@ export class InsertFileError extends Error {
 export const insertFile = async (
   db: AsyncDuckDB,
   file: File,
+  tableName?: string,
   debug: boolean = false
 ): Promise<void> => {
   const start = performance.now();
-  await _insertFile(db, file);
+  await _insertFile(db, file, tableName);
 
   if (debug) {
     logElapsedTime(`Imported ${file.name}`, start);
@@ -44,17 +45,23 @@ export const insertFile = async (
 /**
  * Private method to do the insert.
  */
-const _insertFile = async (db: AsyncDuckDB, file: File): Promise<void> => {
+const _insertFile = async (
+  db: AsyncDuckDB,
+  file: File,
+  tableName?: string
+): Promise<void> => {
   try {
+    tableName = tableName || file.name;
+
     // Try Parquet first.
     if (await isParquetFile(file)) {
-      await insertParquet(db, file);
+      await insertParquet(db, file, tableName);
       return;
     }
 
     // Then Arrow.
     if (await isArrowFile(file)) {
-      await insertArrow(db, file);
+      await insertArrow(db, file, tableName);
       return;
     }
 
@@ -63,18 +70,18 @@ const _insertFile = async (db: AsyncDuckDB, file: File): Promise<void> => {
     const extension = filename.split(".").at(-1);
     switch (extension) {
       case "arrow":
-        await insertArrow(db, file);
+        await insertArrow(db, file, tableName);
         return;
       case "parquet":
-        await insertParquet(db, file);
+        await insertParquet(db, file, tableName);
         return;
       case "csv":
-        await insertCSV(db, file);
+        await insertCSV(db, file, tableName);
         return;
     }
 
     // If nothing else matches, try inserting as CSV.
-    return await insertCSV(db, file);
+    return await insertCSV(db, file, tableName);
   } catch (e) {
     console.error(e);
     if (e instanceof InsertFileError) {
@@ -94,9 +101,8 @@ const _insertFile = async (db: AsyncDuckDB, file: File): Promise<void> => {
 export const insertCSV = async (
   db: AsyncDuckDB,
   file: File,
-  tableName?: string
+  tableName: string
 ): Promise<void> => {
-  tableName = tableName || file.name;
   try {
     const text = await file.text();
 
@@ -136,9 +142,8 @@ export const insertCSV = async (
 export const insertArrow = async (
   db: AsyncDuckDB,
   file: File,
-  tableName?: string
+  tableName: string
 ): Promise<void> => {
-  tableName = tableName || file.name;
   try {
     const buffer = await file.arrayBuffer();
     const arrow = arrayBufferToArrow(buffer);
@@ -171,9 +176,8 @@ export const insertArrowTable = async (
 export const insertParquet = async (
   db: AsyncDuckDB,
   file: File,
-  tableName?: string
+  tableName: string
 ): Promise<void> => {
-  tableName = tableName || file.name;
   try {
     const tempFile = getTempFilename() + ".parquet";
     await db.registerFileHandle(
