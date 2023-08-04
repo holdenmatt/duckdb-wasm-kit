@@ -1,3 +1,4 @@
+import { JSONObject } from "@holdenmatt/ts-utils";
 import { Table as Arrow } from "apache-arrow";
 export type { Table as Arrow } from "apache-arrow";
 export declare const ARROW_MIME_TYPE = "application/vnd.apache.arrow.file";
@@ -20,4 +21,4 @@ export declare const arrowToArrayBuffer: (arrow: Arrow) => ArrayBuffer;
 /**
  * Convert an Apache Arrow table to an array of JSON row objects.
  */
-export declare function arrowToJSON(arrow: Arrow): Record<string, any>[];
+export declare function arrowToJSON(arrow: Arrow): Record<string, JSONObject>[];

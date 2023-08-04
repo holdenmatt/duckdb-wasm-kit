@@ -7,9 +7,7 @@ export declare class InsertFileError extends Error {
 /**
  * Insert a CSV, Arrow, or Parquet file in DuckDB.
  *
- * If successul, return the inserted table name. Otherwise, throw an error.
- *
- * @param debug Print the total elapsed time to the console.
+ * @param debug If true, print the total elapsed time to the console.
  */
 export declare const insertFile: (db: AsyncDuckDB, file: File, tableName?: string, debug?: boolean) => Promise<void>;
 /**
