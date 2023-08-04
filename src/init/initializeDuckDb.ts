@@ -28,9 +28,7 @@ export default async function initializeDuckDb(options?: {
 /**
  * Initialize DuckDB with a browser-specific Wasm bundle.
  */
-const _initializeDuckDb = async (
-  config?: DuckDBConfig
-): Promise<AsyncDuckDB> => {
+const _initializeDuckDb = async (config?: DuckDBConfig): Promise<AsyncDuckDB> => {
   const start = performance.now();
 
   // Select a bundle based on browser checks

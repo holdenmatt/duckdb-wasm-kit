@@ -55,11 +55,7 @@ export const drop = async (db: AsyncDuckDB, name: string) => {
 /**
  * Rename the table or view with a given name.
  */
-export const rename = async (
-  db: AsyncDuckDB,
-  name: string,
-  newName: string
-) => {
+export const rename = async (db: AsyncDuckDB, name: string, newName: string) => {
   const type = await tableType(db, name);
   if (type === TableType.Table) {
     await runQuery(db, `alter table "${name}" rename to "${newName}"`);
@@ -123,10 +119,7 @@ export const cardinalities = async (
   const types = await columnTypes(db, name);
   const columns = Array.from(types.keys());
 
-  const counts = await runQuery(
-    db,
-    `select count(distinct columns(*)) from "${name}"`
-  );
+  const counts = await runQuery(db, `select count(distinct columns(*)) from "${name}"`);
 
   const row = counts.get(0);
   if (!row) {

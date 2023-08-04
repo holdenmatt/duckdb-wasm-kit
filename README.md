@@ -103,7 +103,9 @@ all the [AsyncDuckDb](https://shell.duckdb.org/docs/classes/index.AsyncDuckDB.ht
 
 ## Importing files
 
-The `insertFile` function handles the annoying details of importing a file:
+The `insertFile` function handles the
+[annoying details](https://github.com/holdenmatt/duckdb-wasm-kit/blob/main/src/files/insertFile.ts)
+of importing a file:
 
 ```
 const { db } = useDuckDb();
@@ -123,17 +125,17 @@ We similarly provide functions for exporting files:
 
 ```
 /**
- * Export a table (or view) to an Arrow file with a given filename.
+ * Export a table/view to an Arrow file with a given filename.
  */
 const exportArrow: (db: AsyncDuckDB, tableName: string, filename?: string) => Promise<File>;
 
 /**
- * Export a table (or view) to a CSV file with a given filename.
+ * Export a table/view to a CSV file.
  */
 const exportCsv: (db: AsyncDuckDB, tableName: string, filename?: string, delimiter?: string) => Promise<File>;
 
 /**
- * Export a table to Parquet.
+ * Export a table/view to Parquet.
  *
  * Uses zstd compression by default, which seems to be both smaller & faster for many files.
  */

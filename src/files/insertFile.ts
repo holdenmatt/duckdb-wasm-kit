@@ -24,9 +24,7 @@ export class InsertFileError extends Error {
 /**
  * Insert a CSV, Arrow, or Parquet file in DuckDB.
  *
- * If successul, return the inserted table name. Otherwise, throw an error.
- *
- * @param debug Print the total elapsed time to the console.
+ * @param debug If true, print the total elapsed time to the console.
  */
 export const insertFile = async (
   db: AsyncDuckDB,
@@ -166,7 +164,9 @@ export const insertArrowTable = async (
   tableName: string
 ): Promise<void> => {
   const conn = await db.connect();
-  await conn.insertArrowTable(arrow, { name: tableName });
+  await conn.insertArrowTable(arrow, {
+    name: tableName,
+  });
   await conn.close();
 };
 
@@ -186,10 +186,7 @@ export const insertParquet = async (
       duckdb.DuckDBDataProtocol.BROWSER_FILEREADER,
       true
     );
-    await runQuery(
-      db,
-      `CREATE TABLE '${tableName}' AS SELECT * FROM '${tempFile}'`
-    );
+    await runQuery(db, `CREATE TABLE '${tableName}' AS SELECT * FROM '${tempFile}'`);
     await db.dropFile(tempFile);
   } catch (e) {
     console.error(e);

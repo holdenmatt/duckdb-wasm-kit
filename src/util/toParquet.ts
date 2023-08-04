@@ -13,6 +13,8 @@ import { getTempFilename } from "./tempfile";
 
 /**
  * Given a Parquet, Arrow, or CSV file, convert it to Parquet.
+ *
+ * TODO: Remove this (move it elsewhere).
  */
 export async function toParquet(db: AsyncDuckDB, file: File) {
   if (await isParquetFile(file)) {

@@ -1,3 +1,4 @@
+import { JSONObject } from "@holdenmatt/ts-utils";
 import { Table as Arrow, tableFromIPC, tableToIPC } from "apache-arrow";
 
 export type { Table as Arrow } from "apache-arrow";
@@ -41,8 +42,8 @@ export const arrowToArrayBuffer = (arrow: Arrow): ArrayBuffer => {
 /**
  * Convert an Apache Arrow table to an array of JSON row objects.
  */
-export function arrowToJSON(arrow: Arrow): Record<string, any>[] {
-  const rows: Record<string, any>[] = [];
+export function arrowToJSON(arrow: Arrow): Record<string, JSONObject>[] {
+  const rows: Record<string, JSONObject>[] = [];
   for (let i = 0; i < arrow.numRows; i++) {
     const row = arrow.get(i);
     if (row) {
