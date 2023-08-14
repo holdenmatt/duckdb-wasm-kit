@@ -3,6 +3,12 @@
 Hooks and utilities to make it easier to use
 [duckdb-wasm](https://github.com/duckdb/duckdb-wasm) in React apps.
 
+## Install
+
+```
+npm install duckdb-wasm-kit
+```
+
 ## useDuckDb hook
 
 To initialize and access DuckDB from a React component,
@@ -169,5 +175,7 @@ or removed in the future, so don't depend on them :)
 
 ## License
 
-MIT license. Feel free to copy/fork code as you like. No need for attribution, but if you
+MIT license.
+
+Feel free to copy/fork code as you like. No need for attribution, but if you
 find this library helpful or build something cool with it, [let me know!](https://twitter.com/holdenmatt/)
