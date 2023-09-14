@@ -53,10 +53,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.46.0.tgz#3f7802972e8b6fe3f88ed1aabc74ec596c456db6"
   integrity sha512-a8TLtmPi8xzPkCbp/OGFUo5yhRkHM2Ko9kOWP4znJr0WAhWyThaw3PnwX4vOTWOAMsV2uRt32PPDcEz63esSaA==
 
-"@holdenmatt/ts-utils@^0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@holdenmatt/ts-utils/-/ts-utils-0.1.11.tgz#ae34cd0f8d27e582a9f5b901f210de68a66c8867"
-  integrity sha512-71ekkn8lt1sJap9gvtnco3z6d2CegrDrkbv1RK11C+16ZC3An10V8ZaJarPMZ1MHgi88r2QgzCc4x0TBtxs4EQ==
+"@holdenmatt/ts-utils@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@holdenmatt/ts-utils/-/ts-utils-0.1.13.tgz#f211fc381e9e770f6dca16f429beb501e347d816"
+  integrity sha512-G0Ksb7FSzb71lpsWXsgkTRCbIcLfWUHGT0NhC0NPQAYYOueL/Aox1uZ9ldWLs19XeCKJ2e3FG8p3HALz9zZQbA==
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
