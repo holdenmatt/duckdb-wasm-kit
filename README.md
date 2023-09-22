@@ -62,12 +62,14 @@ const MyApp = () => {
 }
 ```
 
-
 ### Using existing `.duckdb` files
-To use existing `.duckdb` files you need to add these to your `public` folder in react. 
-Configure the `path` in the `DuckDbConfig` to the relative path in the `public` folder. 
 
-For instance if you have the following `public/sample_database.duckdb`, you should configure:
+To load an existing `.duckdb` file, it must be accessible to your app via `fetch`. For example, you can host it in
+the `public` folder of your React app, on Github, or in a service like S3 (if CORS is enabled).
+
+Configure the `path` in the `DuckDbConfig` to the path of your database.
+
+For instance, if you have a database at `public/sample_database.duckdb`, you should configure:
 
 ```
 import { initializeDuckDb } from "duckdb-wasm-kit";
@@ -82,7 +84,6 @@ const MyApp = () => {
         initializeDuckDb({ config, debug: true });
     }, []);
 ```
-
 
 ## Performance logging
 
@@ -193,7 +194,15 @@ locally in duckdb-wasm. No data is sent to or stored on my servers.
 ## utils
 
 I include a few common utils and queries in the `utils/` folder, but these may be changed
-or removed in the future, so don't depend on them :)
+or removed in the future, so don't depend on them.
+
+## Contributing
+
+Found a bug? Please [submit an issue](https://github.com/holdenmatt/duckdb-wasm-kit/issues/new).
+
+## Contributors
+
+[Ramon Vermeulen](https://github.com/ramonvermeulen)
 
 ## License
 

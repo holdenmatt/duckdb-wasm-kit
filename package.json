@@ -1,6 +1,6 @@
 {
   "name": "duckdb-wasm-kit",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Utilities to make it easier to use duckdb-wasm in React apps.",
   "author": "Matt Holden",
   "license": "MIT",
@@ -16,18 +16,18 @@
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.27.0",
-    "@holdenmatt/ts-utils": "^0.1.13",
+    "@holdenmatt/ts-utils": "^0.1.14",
     "apache-arrow": "^11.0.0",
     "react-async-hook": "^4.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "eslint": "^8.46.0",
-    "eslint-config-next": "^13.4.12",
+    "@types/react": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "eslint": "^8.49.0",
+    "eslint-config-next": "^13.5.2",
     "eslint-config-prettier": "^8.10.0",
     "prettier": "^2.8.8",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
