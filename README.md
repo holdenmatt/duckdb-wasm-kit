@@ -62,6 +62,28 @@ const MyApp = () => {
 }
 ```
 
+
+### Using existing `.duckdb` files
+To use existing `.duckdb` files you need to add these to your `public` folder in react. 
+Configure the `path` in the `DuckDbConfig` to the relative path in the `public` folder. 
+
+For instance if you have the following `public/sample_database.duckdb`, you should configure:
+
+```
+import { initializeDuckDb } from "duckdb-wasm-kit";
+
+const MyApp = () => {
+    useEffect(() => {
+        const config: DuckDBConfig = {
+            query: {
+                path: './sample_database.duckdb'
+            },
+        }
+        initializeDuckDb({ config, debug: true });
+    }, []);
+```
+
+
 ## Performance logging
 
 If you call `initializeDuckDb` with `debug: true`, elapsed times for all queries will be logged to the browser console, which can be useful during development.
