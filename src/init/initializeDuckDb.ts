@@ -49,6 +49,11 @@ const _initializeDuckDb = async (config?: DuckDBConfig): Promise<AsyncDuckDB> =>
   URL.revokeObjectURL(worker_url);
 
   if (config) {
+    if (config.path) {
+      const res = await fetch(config.path);
+      const buffer = await res.arrayBuffer();
+      await db.registerFileBuffer(config.path, new Uint8Array(buffer));
+    }
     await db.open(config);
   }
 
