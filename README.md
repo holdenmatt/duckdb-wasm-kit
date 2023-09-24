@@ -62,7 +62,7 @@ const MyApp = () => {
 }
 ```
 
-### Using existing `.duckdb` files
+## Using existing `.duckdb` files
 
 To load an existing `.duckdb` file, it must be accessible to your app via `fetch`. For example, you can host it in
 the `public` folder of your React app, on Github, or in a service like S3 (if CORS is enabled).

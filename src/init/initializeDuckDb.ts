@@ -13,7 +13,7 @@ let DB: Promise<AsyncDuckDB> | undefined;
  * @param config An optional DuckDBConfig object.
  */
 export default async function initializeDuckDb(options?: {
-  debug: boolean;
+  debug?: boolean;
   config?: DuckDBConfig;
 }): Promise<AsyncDuckDB> {
   const { debug = false, config } = options || {};
