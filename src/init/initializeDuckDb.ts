@@ -52,10 +52,12 @@ const _initializeDuckDb = async (config?: DuckDBConfig): Promise<AsyncDuckDB> =>
     if (config.path) {
       const res = await fetch(config.path);
       const buffer = await res.arrayBuffer();
+      const fileNameMatch = config.path.match(/[^/]*$/);
+      if (fileNameMatch) {
+        config.path = fileNameMatch[0];
+      }
       await db.registerFileBuffer(config.path, new Uint8Array(buffer));
     }
-    await db.open(config);
-  }
 
   DEBUG && logElapsedTime("DuckDB initialized", start);
   return db;
