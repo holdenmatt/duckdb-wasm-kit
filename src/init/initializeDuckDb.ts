@@ -58,6 +58,8 @@ const _initializeDuckDb = async (config?: DuckDBConfig): Promise<AsyncDuckDB> =>
       }
       await db.registerFileBuffer(config.path, new Uint8Array(buffer));
     }
+    await db.open(config);
+  }
 
   DEBUG && logElapsedTime("DuckDB initialized", start);
   return db;
