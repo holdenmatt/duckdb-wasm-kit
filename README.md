@@ -42,6 +42,7 @@ before it's needed, by calling `initializeDuckDB`.
 You can also pass a [`DuckDBConfig`](https://shell.duckdb.org/docs/interfaces/index.DuckDBConfig.html) to configure database options.
 
 ```
+import { DuckDBConfig } from "@duckdb/duckdb-wasm";
 import { initializeDuckDb } from "duckdb-wasm-kit";
 
 const MyApp = () => {
@@ -72,6 +73,7 @@ Configure the `path` in the `DuckDbConfig` to the path of your database.
 For instance, if you have a database at `public/sample_database.duckdb`, you should configure:
 
 ```
+import { DuckDBConfig } from "@duckdb/duckdb-wasm";
 import { initializeDuckDb } from "duckdb-wasm-kit";
 
 const MyApp = () => {

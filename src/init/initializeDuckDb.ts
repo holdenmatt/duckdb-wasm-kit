@@ -61,7 +61,12 @@ const _initializeDuckDb = async (config?: DuckDBConfig): Promise<AsyncDuckDB> =>
     await db.open(config);
   }
 
-  DEBUG && logElapsedTime("DuckDB initialized", start);
+  if (DEBUG) {
+    logElapsedTime("DuckDB initialized", start);
+    if (config) {
+      console.debug(`DuckDbConfig: ${JSON.stringify(config, null, 2)}`);
+    }
+  }
   return db;
 };
 
