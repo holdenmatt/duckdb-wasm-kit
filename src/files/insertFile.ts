@@ -111,7 +111,6 @@ export const insertCSV = async (
     await conn.insertCSVFromPath(tempFile, {
       name: tableName,
       schema: "main",
-      header: true,
       detect: true,
     });
     await conn.close();
