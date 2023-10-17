@@ -70,7 +70,7 @@ the `public` folder of your React app, on Github, or in a service like S3 (if CO
 
 Configure the `path` in the `DuckDbConfig` to the path of your database.
 
-For instance, if you have a database at `public/sample_database.duckdb`, you should configure:
+For instance, if you have a database at `./sample_database.duckdb`, you should configure:
 
 ```
 import { DuckDBConfig } from "@duckdb/duckdb-wasm";
@@ -79,9 +79,7 @@ import { initializeDuckDb } from "duckdb-wasm-kit";
 const MyApp = () => {
     useEffect(() => {
         const config: DuckDBConfig = {
-            query: {
-                path: './sample_database.duckdb'
-            },
+            path: './sample_database.duckdb'
         }
         initializeDuckDb({ config, debug: true });
     }, []);
