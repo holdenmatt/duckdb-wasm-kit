@@ -79,10 +79,12 @@ import { initializeDuckDb } from "duckdb-wasm-kit";
 const MyApp = () => {
     useEffect(() => {
         const config: DuckDBConfig = {
-            path: './sample_database.duckdb'
+            path: "./sample_database.duckdb"
         }
         initializeDuckDb({ config, debug: true });
     }, []);
+    ...
+}
 ```
 
 ## Performance logging
@@ -203,6 +205,10 @@ Found a bug? Please [submit an issue](https://github.com/holdenmatt/duckdb-wasm-
 ## Contributors
 
 [Ramon Vermeulen](https://github.com/ramonvermeulen)
+
+## Changelog
+
+- Oct 31, 2023: Upgrade to duckdb-wasm 1.28.0 and apache-arrow 13.0.0
 
 ## License
 
