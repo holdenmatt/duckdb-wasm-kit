@@ -15,19 +15,19 @@
     "build": "rm -rf dist && tsc --listEmittedFiles"
   },
   "dependencies": {
-    "@duckdb/duckdb-wasm": "^1.28.0",
-    "@holdenmatt/ts-utils": "^0.1.14",
-    "apache-arrow": "^13.0.0",
+    "@duckdb/duckdb-wasm": "^1.28.1-dev87.0",
+    "@holdenmatt/ts-utils": "^0.1.15",
+    "apache-arrow": "^14.0.2",
     "react-async-hook": "^4.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.33",
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "eslint": "^8.49.0",
-    "eslint-config-next": "^13.5.2",
-    "eslint-config-prettier": "^8.10.0",
-    "prettier": "^2.8.8",
-    "typescript": "^5.2.2"
+    "@types/react": "^18.2.48",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^14.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^3.2.2",
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
