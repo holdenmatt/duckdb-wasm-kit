@@ -21,7 +21,7 @@ export const inferTypes = async (db: AsyncDuckDB, tableName: string) => {
     if (column.toLowerCase().includes("year")) {
       await runQuery(
         db,
-        `ALTER TABLE "${tableName}" ALTER COLUMN "${column}" SET DATA TYPE VARCHAR`
+        `ALTER TABLE "${tableName}" ALTER COLUMN "${column}" SET DATA TYPE VARCHAR`,
       );
     }
   }

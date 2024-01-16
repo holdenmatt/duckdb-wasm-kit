@@ -1,5 +1,6 @@
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
 import { useAsync } from "react-async-hook";
+
 import { getDuckDB } from "../init/initializeDuckDb";
 
 /**

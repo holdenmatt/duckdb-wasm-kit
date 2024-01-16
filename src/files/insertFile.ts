@@ -3,14 +3,14 @@
  */
 import * as duckdb from "@duckdb/duckdb-wasm";
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
-import { Table as Arrow } from "apache-arrow";
 import { logElapsedTime } from "@holdenmatt/ts-utils";
+import { Table as Arrow } from "apache-arrow";
 
-import { arrayBufferToArrow, isArrowFile } from "./arrow";
-import { isParquetFile } from "./parquet";
+import { inferTypes } from "../util/inferTypes";
 import { runQuery } from "../util/runQuery";
 import { getTempFilename } from "../util/tempfile";
-import { inferTypes } from "../util/inferTypes";
+import { arrayBufferToArrow, isArrowFile } from "./arrow";
+import { isParquetFile } from "./parquet";
 
 export class InsertFileError extends Error {
   title: string;
@@ -30,7 +30,7 @@ export const insertFile = async (
   db: AsyncDuckDB,
   file: File,
   tableName?: string,
-  debug: boolean = false
+  debug: boolean = false,
 ): Promise<void> => {
   const start = performance.now();
   await _insertFile(db, file, tableName);
@@ -46,7 +46,7 @@ export const insertFile = async (
 const _insertFile = async (
   db: AsyncDuckDB,
   file: File,
-  tableName?: string
+  tableName?: string,
 ): Promise<void> => {
   try {
     tableName = tableName || file.name;
@@ -87,7 +87,7 @@ const _insertFile = async (
     } else {
       throw new InsertFileError(
         "Invalid file type",
-        "Only CSV, Parquet, or Arrow files are supported"
+        "Only CSV, Parquet, or Arrow files are supported",
       );
     }
   }
@@ -99,7 +99,7 @@ const _insertFile = async (
 export const insertCSV = async (
   db: AsyncDuckDB,
   file: File,
-  tableName: string
+  tableName: string,
 ): Promise<void> => {
   try {
     const text = await file.text();
@@ -124,7 +124,7 @@ export const insertCSV = async (
     if (file.type === "text/csv" || file.name.toLowerCase().endsWith(".csv")) {
       throw new InsertFileError(
         "CSV import failed",
-        "Sorry, we couldn't import that CSV. Please try again."
+        "Sorry, we couldn't import that CSV. Please try again.",
       );
     }
 
@@ -139,7 +139,7 @@ export const insertCSV = async (
 export const insertArrow = async (
   db: AsyncDuckDB,
   file: File,
-  tableName: string
+  tableName: string,
 ): Promise<void> => {
   try {
     const buffer = await file.arrayBuffer();
@@ -149,7 +149,7 @@ export const insertArrow = async (
     console.error(e);
     throw new InsertFileError(
       "Arrow import failed",
-      "Sorry, we couldn't import that file"
+      "Sorry, we couldn't import that file",
     );
   }
 };
@@ -160,7 +160,7 @@ export const insertArrow = async (
 export const insertArrowTable = async (
   db: AsyncDuckDB,
   arrow: Arrow,
-  tableName: string
+  tableName: string,
 ): Promise<void> => {
   const conn = await db.connect();
   await conn.insertArrowTable(arrow, {
@@ -175,7 +175,7 @@ export const insertArrowTable = async (
 export const insertParquet = async (
   db: AsyncDuckDB,
   file: File,
-  tableName: string
+  tableName: string,
 ): Promise<void> => {
   try {
     const tempFile = getTempFilename() + ".parquet";
@@ -183,7 +183,7 @@ export const insertParquet = async (
       tempFile,
       file,
       duckdb.DuckDBDataProtocol.BROWSER_FILEREADER,
-      true
+      true,
     );
     await runQuery(db, `CREATE TABLE '${tableName}' AS SELECT * FROM '${tempFile}'`);
     await db.dropFile(tempFile);
@@ -191,7 +191,7 @@ export const insertParquet = async (
     console.error(e);
     throw new InsertFileError(
       "Parquet import failed",
-      "Sorry, we couldn't import that file"
+      "Sorry, we couldn't import that file",
     );
   }
 };

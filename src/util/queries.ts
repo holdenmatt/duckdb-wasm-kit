@@ -2,9 +2,9 @@
  * A few convenient utility queries.
  */
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
+import { AssertionError } from "@holdenmatt/ts-utils";
 
 import { runQuery } from "./runQuery";
-import { AssertionError } from "@holdenmatt/ts-utils";
 
 export enum TableType {
   Table = "Table",
@@ -17,11 +17,11 @@ export enum TableType {
  */
 export const tableType = async (
   db: AsyncDuckDB,
-  name: string
+  name: string,
 ): Promise<TableType | undefined> => {
   const arrow = await runQuery(
     db,
-    `select table_type from information_schema.tables where table_name = '${name}'`
+    `select table_type from information_schema.tables where table_name = '${name}'`,
   );
 
   if (arrow.numRows === 1) {
@@ -73,12 +73,12 @@ export const rename = async (db: AsyncDuckDB, name: string, newName: string) => 
  */
 export const tableNames = async (
   db: AsyncDuckDB,
-  includeViews = false
+  includeViews = false,
 ): Promise<string[]> => {
   const arrow = await runQuery(
     db,
     `select table_name from information_schema.tables
-    ${includeViews ? "" : "where table_type = 'BASE TABLE'"}`
+    ${includeViews ? "" : "where table_type = 'BASE TABLE'"}`,
   );
 
   const tables: string[] = arrow.getChild("table_name")?.toArray() || [];
@@ -90,11 +90,11 @@ export const tableNames = async (
  */
 export const columnTypes = async (
   db: AsyncDuckDB,
-  name: string
+  name: string,
 ): Promise<Map<string, string>> => {
   const arrow = await runQuery(
     db,
-    `select column_name, data_type from information_schema.columns where table_name = '${name}'`
+    `select column_name, data_type from information_schema.columns where table_name = '${name}'`,
   );
 
   const columns = new Map<string, string>();
@@ -114,7 +114,7 @@ export const columnTypes = async (
  */
 export const cardinalities = async (
   db: AsyncDuckDB,
-  name: string
+  name: string,
 ): Promise<Record<string, number>> => {
   const types = await columnTypes(db, name);
   const columns = Array.from(types.keys());

@@ -3,11 +3,11 @@
  */
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
 
+import { runQuery } from "../util/runQuery";
+import { getTempFilename } from "../util/tempfile";
 import { ARROW_MIME_TYPE, arrowToArrayBuffer } from "./arrow";
 import { CSV_MIME_TYPE } from "./csv";
 import { PARQUET_MIME_TYPE } from "./parquet";
-import { runQuery } from "../util/runQuery";
-import { getTempFilename } from "../util/tempfile";
 
 /**
  * Export a table (or view) to an Arrow file with a given filename.
@@ -15,7 +15,7 @@ import { getTempFilename } from "../util/tempfile";
 export const exportArrow = async (
   db: AsyncDuckDB,
   tableName: string,
-  filename?: string
+  filename?: string,
 ): Promise<File> => {
   filename = filename || getExportedFilename(tableName, "arrow");
 
@@ -32,14 +32,14 @@ export const exportCsv = async (
   db: AsyncDuckDB,
   tableName: string,
   filename?: string,
-  delimiter = ","
+  delimiter = ",",
 ): Promise<File> => {
   filename = filename || getExportedFilename(tableName, "csv");
 
   const tempFile = getTempFilename();
   await runQuery(
     db,
-    `COPY '${tableName}' TO '${tempFile}' WITH (HEADER 1, DELIMITER '${delimiter}')`
+    `COPY '${tableName}' TO '${tempFile}' WITH (HEADER 1, DELIMITER '${delimiter}')`,
   );
 
   const buffer = await db.copyFileToBuffer(tempFile);
@@ -57,14 +57,14 @@ export const exportParquet = async (
   db: AsyncDuckDB,
   tableName: string,
   filename?: string,
-  compression: "uncompressed" | "snappy" | "gzip" | "zstd" = "zstd"
+  compression: "uncompressed" | "snappy" | "gzip" | "zstd" = "zstd",
 ): Promise<File> => {
   filename = filename || getExportedFilename(tableName, "parquet");
 
   const tempFile = getTempFilename();
   await runQuery(
     db,
-    `COPY '${tableName}' TO '${tempFile}' (FORMAT PARQUET, COMPRESSION ${compression})`
+    `COPY '${tableName}' TO '${tempFile}' (FORMAT PARQUET, COMPRESSION ${compression})`,
   );
 
   const buffer = await db.copyFileToBuffer(tempFile);

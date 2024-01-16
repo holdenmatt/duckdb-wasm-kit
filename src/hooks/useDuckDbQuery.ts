@@ -12,7 +12,7 @@ import { useDuckDb } from "./useDuckDb";
  * If sql is undefined, returns undefined.
  */
 export const useDuckDbQuery = (
-  sql: string | undefined
+  sql: string | undefined,
 ): {
   arrow: Arrow | undefined;
   loading: boolean;
