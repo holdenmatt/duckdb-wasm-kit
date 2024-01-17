@@ -22,12 +22,12 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@duckdb/duckdb-wasm@^1.28.1-dev87.0":
-  version "1.28.1-dev87.0"
-  resolved "https://registry.yarnpkg.com/@duckdb/duckdb-wasm/-/duckdb-wasm-1.28.1-dev87.0.tgz#ace0e2c0a51430efe42a36ada63020efbc4dd8bd"
-  integrity sha512-eHkXwur+fNo00ro5U49YPVSpcuCQJq2gy/KOrsI/fQxbhndKQ5BKHKZGweEMl9l+amwc+MgHYDBPHyDHX/VF4Q==
+"@duckdb/duckdb-wasm@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@duckdb/duckdb-wasm/-/duckdb-wasm-1.28.0.tgz#afca5146d7d446f2b0bc3bf0818abd2a838d44e6"
+  integrity sha512-YaswpEmxr1Sp20/FZbWR7bZBJqj6xQXX2m4LLzYBnA02g4K1yrpxsBWmkxQyMbrH6AHKhcUUqAlaXfA2Rvaa3w==
   dependencies:
-    apache-arrow "^14.0.1"
+    apache-arrow "^13.0.0"
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
@@ -256,10 +256,10 @@ ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-apache-arrow@^14.0.1, apache-arrow@^14.0.2:
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/apache-arrow/-/apache-arrow-14.0.2.tgz#737f7b8211ef99a2c137dcc9d2001b469efb0344"
-  integrity sha512-EBO2xJN36/XoY81nhLcwCJgFwkboDZeyNQ+OPsG7bCoQjc2BT0aTyH/MR6SrL+LirSNz+cYqjGRlupMMlP1aEg==
+apache-arrow@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/apache-arrow/-/apache-arrow-13.0.0.tgz#8c8c69ca8ec53b804b4e10fe6b57483bda46dfbd"
+  integrity sha512-3gvCX0GDawWz6KFNC28p65U+zGh/LZ6ZNKWNu74N6CQlKzxeoWHpi4CgEQsgRSEMuyrIIXi1Ea2syja7dwcHvw==
   dependencies:
     "@types/command-line-args" "5.2.0"
     "@types/command-line-usage" "5.0.2"
