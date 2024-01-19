@@ -12,21 +12,29 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && tsc --listEmittedFiles"
+    "build": "rm -rf dist && tsup --dts"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "sourcemap": true,
+    "clean": true
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.28.0",
-    "@holdenmatt/ts-utils": "^0.1.15",
+    "@holdenmatt/ts-utils": "^0.1.16",
     "apache-arrow": "^13.0.0",
     "react-async-hook": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.48",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^14.0.4",
+    "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "prettier": "^3.2.2",
+    "prettier": "^3.2.4",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
@@ -39,7 +47,11 @@
     "react"
   ],
   "files": [
-    "dist/",
-    "src/"
-  ]
+    "dist"
+  ],
+  "prettier": {
+    "printWidth": 90,
+    "tabWidth": 2,
+    "useTabs": false
+  }
 }
