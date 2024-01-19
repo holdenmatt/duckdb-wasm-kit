@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2016",
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "strict": true,
@@ -11,7 +11,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
     "strictNullChecks": true,
     "declaration": true,
     "outDir": "./dist"
