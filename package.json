@@ -22,9 +22,9 @@
     "clean": true
   },
   "dependencies": {
-    "@duckdb/duckdb-wasm": "^1.28.0",
+    "@duckdb/duckdb-wasm": "^1.28.1-dev91.0",
     "@holdenmatt/ts-utils": "^0.1.16",
-    "apache-arrow": "^13.0.0",
+    "apache-arrow": "^14.0.2",
     "react-async-hook": "^4.0.0"
   },
   "devDependencies": {
