@@ -208,6 +208,7 @@ Found a bug? Please [submit an issue](https://github.com/holdenmatt/duckdb-wasm-
 
 ## Changelog
 
+- Mar 5, 2024: Upgrade to duckdb-wasm 1.28.1-dev159.0 and apache-arrow 15.0.0
 - Oct 31, 2023: Upgrade to duckdb-wasm 1.28.0 and apache-arrow 13.0.0
 
 ## License
