@@ -22,10 +22,10 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@duckdb/duckdb-wasm@1.28.1-dev195.0":
-  version "1.28.1-dev195.0"
-  resolved "https://registry.yarnpkg.com/@duckdb/duckdb-wasm/-/duckdb-wasm-1.28.1-dev195.0.tgz#5e85cc5b961dcb956e1042d2b22183f3e3c192a2"
-  integrity sha512-p5ZjaR6K2qvq98my7CHHQlRmzU0fhkC1Cem3jHxiRjlFffywP34GYXA8sFnwiSCT4vbgwaJOtcaW9JFeHygYGQ==
+"@duckdb/duckdb-wasm@1.28.1-dev211.0":
+  version "1.28.1-dev211.0"
+  resolved "https://registry.yarnpkg.com/@duckdb/duckdb-wasm/-/duckdb-wasm-1.28.1-dev211.0.tgz#d0ff3774abbde3c2e13ccf6d6eeed9d9dea6ca62"
+  integrity sha512-sXekta6DuAgjrfSY6r/YUPrtAGS1V4T/EXXpQ0uVfHsbZSMBUDzg08UzGfESrUHVR9bcAM3uPrOOWVqki/X4oQ==
   dependencies:
     apache-arrow "^15.0.0"
 
