@@ -1,5 +1,4 @@
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
-import { logElapsedTime } from "@holdenmatt/ts-utils";
 
 import {
   exportParquet,
@@ -8,6 +7,7 @@ import {
   isArrowFile,
   isParquetFile,
 } from "../files";
+import { logElapsedTime } from "./perf";
 import { runQuery } from "./runQuery";
 import { getTempFilename } from "./tempfile";
 

@@ -2,7 +2,6 @@
  * A few convenient utility queries.
  */
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
-import { AssertionError } from "@holdenmatt/ts-utils";
 
 import { runQuery } from "./runQuery";
 
@@ -33,7 +32,7 @@ export const tableType = async (
       case "VIEW":
         return TableType.View;
       default:
-        throw new AssertionError(`Unexpected table type: ${type}`);
+        throw new Error(`Unexpected table type: ${type}`);
     }
   } else {
     return undefined;
@@ -123,12 +122,12 @@ export const cardinalities = async (
 
   const row = counts.get(0);
   if (!row) {
-    throw new AssertionError(`Expected a single row of cardinalities: ${name}`);
+    throw new Error(`Expected a single row of cardinalities: ${name}`);
   }
 
   const rowValues: number[] = row.toArray();
   if (rowValues.length !== columns.length) {
-    throw new AssertionError(`Unexpected length mismatch: ${name}`);
+    throw new Error(`Unexpected length mismatch: ${name}`);
   }
 
   const cardinalities: Record<string, number> = {};

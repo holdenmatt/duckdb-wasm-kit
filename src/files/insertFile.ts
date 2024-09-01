@@ -3,11 +3,11 @@
  */
 import * as duckdb from "@duckdb/duckdb-wasm";
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
-import { logElapsedTime } from "@holdenmatt/ts-utils";
 import { Table as Arrow } from "apache-arrow";
 
 import { inferTypes } from "../util/inferTypes";
 import { runQuery } from "../util/runQuery";
+import { logElapsedTime } from "../util/perf";
 import { getTempFilename } from "../util/tempfile";
 import { arrayBufferToArrow, isArrowFile } from "./arrow";
 import { isParquetFile } from "./parquet";

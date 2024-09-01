@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "1.28.1-dev215.0",
-    "@holdenmatt/ts-utils": "^0.1.16",
     "react-async-hook": "^4.0.0"
   },
   "devDependencies": {

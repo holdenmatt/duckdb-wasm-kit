@@ -1,7 +1,7 @@
 import { AsyncDuckDB } from "@duckdb/duckdb-wasm";
-import { logElapsedTime } from "@holdenmatt/ts-utils";
 import { Table as Arrow } from "apache-arrow";
 
+import { logElapsedTime } from "../util/perf";
 import { DEBUG } from "../init/initializeDuckDb";
 
 /**
