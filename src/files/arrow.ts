@@ -1,5 +1,6 @@
 import { Table as Arrow, tableFromIPC, tableToIPC } from "apache-arrow";
 export type { Table as Arrow } from "apache-arrow";
+
 import { JSONObject } from "../util/types";
 
 export const ARROW_MIME_TYPE = "application/vnd.apache.arrow.file";

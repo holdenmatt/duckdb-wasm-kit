@@ -7,7 +7,10 @@ Hooks and utilities to make it easier to use
 
 ```
 npm install duckdb-wasm-kit
+npm install @duckdb/duckdb-wasm
 ```
+
+Note: duckdb-wasm is a peer dependency, so you can control what version you want to use.
 
 ## useDuckDb hook
 
