@@ -40,7 +40,7 @@ Multiple calls are fine, only one singleton instance will be created.
 
 Loading the DuckDB wasm bundle can take a few seconds.
 For a better user experience, you can optionally preload the DuckDB instance
-before it's needed, by calling `initializeDuckDB`.
+before it's needed, by calling `initializeDuckDb`.
 
 You can also pass a [`DuckDBConfig`](https://shell.duckdb.org/docs/interfaces/index.DuckDBConfig.html) to configure database options.
 
@@ -71,7 +71,7 @@ const MyApp = () => {
 To load an existing `.duckdb` file, it must be accessible to your app via `fetch`. For example, you can host it in
 the `public` folder of your React app, on Github, or in a service like S3 (if CORS is enabled).
 
-Configure the `path` in the `DuckDbConfig` to the path of your database.
+Configure the `path` in the `DuckDBConfig` to the path of your database.
 
 For instance, if you have a database at `./sample_database.duckdb`, you should configure:
 
@@ -132,7 +132,7 @@ const MyComponent = () => {
 }
 ```
 
-Of course, if you prefer to do things yourself, the `useDuckDB` hook gives you access to
+Of course, if you prefer to do things yourself, the `useDuckDb` hook gives you access to
 all the [AsyncDuckDb](https://shell.duckdb.org/docs/classes/index.AsyncDuckDB.html) methods.
 
 ## Importing files
@@ -210,6 +210,7 @@ Found a bug? Please [submit an issue](https://github.com/holdenmatt/duckdb-wasm-
 [Ramon Vermeulen](https://github.com/ramonvermeulen)
 
 ## Changelog
+- Sep 3, 2024: Make duckdb-wasm a peer dependency
 - Jun 5, 2024: Upgrade to duckdb-wasm 1.28.1-dev211.0 (using duckdb 1.0)
 - Mar 5, 2024: Upgrade to duckdb-wasm 1.28.1-dev159.0 and apache-arrow 15.0.0
 - Oct 31, 2023: Upgrade to duckdb-wasm 1.28.0 and apache-arrow 13.0.0
