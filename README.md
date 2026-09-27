@@ -5,7 +5,7 @@ Hooks and utilities to make it easier to use
 
 ## Install
 
-```
+```bash
 npm install duckdb-wasm-kit
 npm install @duckdb/duckdb-wasm
 ```
@@ -17,7 +17,7 @@ Note: duckdb-wasm is a peer dependency, so you can control what version you want
 To initialize and access DuckDB from a React component,
 just call the `useDuckDb` hook:
 
-```
+```tsx
 import { useDuckDb } from "duckdb-wasm-kit";
 
 const MyComponent = () => {
@@ -44,7 +44,7 @@ before it's needed, by calling `initializeDuckDb`.
 
 You can also pass a [`DuckDBConfig`](https://shell.duckdb.org/docs/interfaces/index.DuckDBConfig.html) to configure database options.
 
-```
+```tsx
 import { DuckDBConfig } from "@duckdb/duckdb-wasm";
 import { initializeDuckDb } from "duckdb-wasm-kit";
 
@@ -75,7 +75,7 @@ Configure the `path` in the `DuckDBConfig` to the path of your database.
 
 For instance, if you have a database at `./sample_database.duckdb`, you should configure:
 
-```
+```tsx
 import { DuckDBConfig } from "@duckdb/duckdb-wasm";
 import { initializeDuckDb } from "duckdb-wasm-kit";
 
@@ -98,7 +98,7 @@ If you call `initializeDuckDb` with `debug: true`, elapsed times for all queries
 
 If needed, you can access DuckDb outside of React components like this:
 
-```
+```tsx
 import { getDuckDb } from "duckdb-wasm-kit";
 
 const db: AsyncDuckDB = await getDuckDb();
@@ -109,7 +109,7 @@ const db: AsyncDuckDB = await getDuckDb();
 As a convenience, we also provide a `useDuckDbQuery` hook to make it easier for components
 to react to the typical query lifecycle.
 
-```
+```tsx
 import { useDuckDbQuery } from "duckdb-wasm-kit";
 
 const MyComponent = () => {
@@ -141,7 +141,7 @@ The `insertFile` function handles the
 [annoying details](https://github.com/holdenmatt/duckdb-wasm-kit/blob/main/src/files/insertFile.ts)
 of importing a file:
 
-```
+```tsx
 const { db } = useDuckDb();
 const file: File = ...
 const tableName = "myTable";
@@ -157,7 +157,7 @@ If a tableName isn't provided, `file.name` will be used.
 
 We similarly provide functions for exporting files:
 
-```
+```ts
 /**
  * Export a table/view to an Arrow file with a given filename.
  */
